@@ -1,0 +1,36 @@
+\stopcounter
+\begin{frame}{Origem}
+  O \textbf{Freeze-Tag Problem (FTP)} surge como um problema de robótica de enxame em 2002~\cite{Arkin02}:
+  \bigbreak
+  \begin{minipage}{\linewidth}
+    \centering
+    \multiinclude[format=png, start=0, end=4, graphics={height=5cm}]{FTP/ftp_example/Temp}
+  \end{minipage}
+\end{frame}
+\inccounter
+
+\begin{frame}{Alguns Resultados}
+  \begin{thm}[Arkin et al.~\cite{Arkin02}]
+    Existe um EPTAS para o FTP com distâncias $L_p$ em qualquer espaço de dimensão fixa $\R^d$.
+    \pause
+    
+    \medskip
+    O tempo de execução é $O(n \log n) + 2^{O(d(\overeps)^d\log{(\overeps)})}$.
+  \end{thm}
+\end{frame}
+
+\begin{frame}{Alguns Resultados}
+  \begin{thm}[Abel et al.~\cite{Yu17}]
+    O FTP é NP-difícil para distância $L_2$ no plano.
+  \end{thm}
+
+  \pause
+  \begin{thm}[Demaine e Rudoy~\cite{Erik17}]
+    O FTP é NP-difícil para distâncias $L_p$, onde $p>1$, em 3D.
+  \end{thm}
+
+  \pause
+  \begin{thm}[Pedrosa e Silva~\cite{Lu23}]
+    O FTP é fortemente NP-difícil para distância $L_1$ em 3D.
+  \end{thm}
+\end{frame}

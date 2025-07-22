@@ -1,0 +1,171 @@
+% \documentclass[handout, xcolor=table]{beamer}
+\documentclass[xcolor=table]{beamer}
+
+%-----------------------[ Macros ]----------------------------------------------%
+
+\input{macros}
+
+\newcounter{finalframe}
+\newcommand{\stopcounter}{
+  \setcounter{finalframe}{\insertframenumber}
+}
+
+\newcommand{\resumecounter}{
+  \setcounter{framenumber}{\value{finalframe}}
+}
+
+\newcommand{\inccounter}{
+  \setcounter{framenumber}{\value{finalframe} + 1}
+}
+
+%-----------------------[ Template ]-------------------------------------------%
+
+\mode<presentation> {
+    \usetheme[sectionpage=none, progressbar=frametitle, block=fill]{moloch} % modern fork of the metropolis theme
+    \setbeamertemplate{footline}[frame number] % to replace the footer line in all slides with a simple slide count
+}
+\setbeamerfont{footnote}{size=\tiny}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footnote}{%
+    \hangpara{2em}{1}%
+    \makebox[2em][l]{\tiny\insertfootnotemark}%
+    \hspace{-1em}\tiny\insertfootnotetext\par\vspace{0.2cm}%
+}
+\setbeamercolor{background canvas}{bg=white}
+
+%-----------------------[ (Sub)Section Slides ]--------------------------------%
+
+\AtBeginSection[]{
+    \begin{frame}[plain,noframenumbering]
+        \setbeamercolor{title}{bg=mDarkTeal,fg=black!2}
+        \vfill
+        \centering
+        \begin{beamercolorbox}[sep=8pt,center,shadow=true]{title}
+            \usebeamerfont{title}\insertsectionhead\par%
+        \end{beamercolorbox}
+        \vfill
+    \end{frame}
+}
+
+% \makeatletter
+% \newcommand{\subseqslide}{
+% \begin{frame}
+%   \setbeamercolor{title}{bg=mDarkTeal,fg=black!2}
+%   \centering
+%   \begin{minipage}{22em}
+%     \raggedright
+%     \begin{beamercolorbox}[sep=8pt,center,shadow=true]{title}
+%         \usebeamerfont{title}\insertsectionhead\par%
+%     \end{beamercolorbox}
+%     \usebeamertemplate*{progress bar in section page}
+%     \par
+%     \ifx\insertsubsectionhead\@empty\else%
+%       \vskip-.6\baselineskip
+%       \usebeamercolor[fg]{subsection title}%
+%       \usebeamerfont{subsection title}%
+%       \insertsubsectionhead{}
+%     \fi
+%   \end{minipage}
+%   \par
+%   \vspace{\baselineskip}
+% \end{frame}
+% }
+
+% \AtBeginSubsection[]{%
+% \subseqslide
+
+% \setcounter{tocdepth}{3}
+% \frame<beamer>{ 
+%   \frametitle{}
+%   \centering
+%   \begin{minipage}{20em}
+%   \tableofcontents[
+%     currentsection,currentsubsection,sectionstyle=show/hide,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/show/hide/hide
+%   ]    
+%   \end{minipage}
+  
+% }
+% }
+% \makeatother
+
+%-----------------------[ Title page ]-----------------------------------------%
+
+\renewcommand*{\thefootnote}{\arabic{footnote}}
+\title{
+  \large{An XP Approximation Scheme for AFTP in 2D}%
+  \texorpdfstring{\footnote{
+    Supported by the São Paulo Research Foundation~(FAPESP) grant
+    %
+    \mbox{2023/12529-8}
+    %
+    and by the National Council for Scientific and Technological Development~(CNPq) grants
+    %
+    \mbox{\#312271/2023-9},  % pq leh
+    \mbox{\#404315/2023-2}.  % univ fkm
+    }}{}
+}
+
+\titlegraphic{
+  \includegraphics[height=1.cm]{logos/ic.png}
+  \hfill
+  \includegraphics[height=1.2cm]{logos/unicamp.png}
+}
+
+\author{
+  \textbf{Lucas de Oliveira Silva}\texorpdfstring{\\}{}
+  Lehilton Lelis Chaves Pedrosa
+}
+
+\institute{Instituto de Computação, Unicamp}
+
+\date{23rd of July, 2025}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% \setcounter{tocdepth}{2}
+% \begin{frame}{Sumário}
+%   \tableofcontents
+% \end{frame}
+
+%------------------------------------------------------------------------------%
+
+\section{Freeze-Tag Problem Original}
+\input{1-ftp}
+
+\section{Angular Freeze-Tag Problem}
+\input{2-aftp}
+
+\section{Nossos Resultados}
+\input{3-resultados}
+
+\section{Trabalhos Futuros}
+\input{4-future}
+
+\begin{frame}[plain,noframenumbering]
+  \large{\centerline{Obrigado a todos pela atenção...}}
+  \pause
+  \Huge{\centerline{Fim.}}
+\end{frame}
+
+%-----------------------[ Bibliography ]---------------------------------------%
+
+\appendix
+
+\setbeamertemplate{bibliography item}[text]
+\begin{frame}
+  \frametitle{Referências}
+  {
+    \tiny
+    \bibliographystyle{alpha}
+    \bibliography{bibliography}
+  }
+\end{frame}
+
+%-----------------------[ Backup ]---------------------------------------------%
+
+
+\end{document}
